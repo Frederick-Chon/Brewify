@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
+import HeaderWrapper from '@/components/header/header-wrapper';
+import Navigation from '@/components/navigation/navigation';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -27,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <HeaderWrapper />
+        <main className="pb-16">{children}</main> {/* Content for each route */}
+        <Navigation />
       </body>
     </html>
   );
