@@ -4,10 +4,10 @@ type HeaderProps = {
 };
 
 const Header = ({ title, subtitle }: HeaderProps) => (
-  <div className="bg-gray-900 pt-4 px-4">
+  <header className="mx-auto max-w-screen-sm px-5 py-5 bg-gray-900">
     <h1 className="text-3xl font-bold">{title}</h1>
     {subtitle && <p className="text-lg text-gray-400">{subtitle}</p>}
-  </div>
+  </header>
 );
 
 export default Header;

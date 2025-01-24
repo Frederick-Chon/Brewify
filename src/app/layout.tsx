@@ -31,7 +31,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <HeaderWrapper />
-        <main className="pb-16">{children}</main> {/* Content for each route */}
+        <main className="bg-gray-900">
+          <div className="mx-auto max-w-screen-sm bg-gray-900 px-5">
+            {children}
+          </div>
+        </main>
         <Navigation />
       </body>
     </html>

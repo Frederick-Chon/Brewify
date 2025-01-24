@@ -2,37 +2,48 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Home, BookOpen, Coffee, Settings, LucideIcon } from 'lucide-react';
 
-const Navigation = () => {
+type NavItem = {
+  label: string;
+  icon: LucideIcon;
+  route: string;
+};
+
+const navItems: NavItem[] = [
+  { label: 'Home', icon: Home, route: '/' },
+  { label: 'Notes', icon: BookOpen, route: '/notes' },
+  { label: 'Coffee', icon: Coffee, route: '/coffee' },
+  { label: 'Settings', icon: Settings, route: '/settings' },
+];
+
+const Navigation: React.FC = () => {
   const pathName = usePathname();
 
-  const navItems = [
-    { label: 'Home', icon: '🏠', route: '/' },
-    { label: 'Notes', icon: '📓', route: '/notes' },
-    { label: 'Coffee', icon: '☕', route: '/coffee' },
-    { label: 'Settings', icon: '⚙️', route: '/settings' },
-  ];
-
   return (
-    <nav className="bg-gray-800 fixed bottom-0 w-full flex justify-around py-2">
-      {navItems.map((item) => (
-        <Link key={item.route} href={item.route}>
-          <button
-            className={`flex flex-col items-center ${
-              pathName === item.route ? 'text-white' : 'text-gray-400'
-            } hover:text-white`}
-          >
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                pathName === item.route ? 'bg-blue-500' : 'bg-gray-600'
-              }`}
+    <nav className="mx-auto max-w-screen-sm px-2 bg-gray-900 fixed bottom-0 w-full flex justify-around py-3 inset-x-0">
+      {navItems.map((item) => {
+        const Icon = item.icon;
+        const isActive = pathName === item.route;
+
+        return (
+          <Link key={item.route} href={item.route}>
+            <button
+              className={`flex flex-col items-center ${
+                isActive ? 'text-white' : 'text-gray-400'
+              } hover:text-white transition-colors duration-200`}
             >
-              <span className="text-lg">{item.icon}</span>
-            </div>
-            <span className="text-sm mt-1">{item.label}</span>
-          </button>
-        </Link>
-      ))}
+              <Icon
+                size={32}
+                className={`mb-1 transition-transform duration-200 ${
+                  isActive ? 'scale-110' : 'scale-100'
+                }`}
+              />
+              <span className="text-sm">{item.label}</span>
+            </button>
+          </Link>
+        );
+      })}
     </nav>
   );
 };
