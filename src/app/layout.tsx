@@ -31,8 +31,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <HeaderWrapper />
-        <main className="bg-gray-900">
-          <div className="mx-auto max-w-screen-sm bg-gray-900 px-5">
+        <main className="bg-zinc-950">
+          <div className="mx-auto max-w-screen-sm bg-zinc-950 px-5">
             {children}
           </div>
         </main>

@@ -21,7 +21,7 @@ const Navigation: React.FC = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="mx-auto max-w-screen-sm px-2 bg-gray-900 fixed bottom-0 w-full flex justify-around py-3 inset-x-0">
+    <nav className="mx-auto max-w-screen-sm px-2 bg-zinc-950 fixed bottom-0 w-full flex justify-around py-3 inset-x-0">
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = pathName === item.route;
@@ -30,16 +30,16 @@ const Navigation: React.FC = () => {
           <Link key={item.route} href={item.route}>
             <button
               className={`flex flex-col items-center ${
-                isActive ? 'text-white' : 'text-gray-400'
+                isActive ? 'text-yellow-500' : 'text-gray-400'
               } hover:text-white transition-colors duration-200`}
             >
               <Icon
-                size={32}
+                size={24}
                 className={`mb-1 transition-transform duration-200 ${
                   isActive ? 'scale-110' : 'scale-100'
                 }`}
               />
-              <span className="text-sm">{item.label}</span>
+              <span className="text-xs">{item.label}</span>
             </button>
           </Link>
         );
