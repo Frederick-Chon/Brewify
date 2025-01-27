@@ -5,20 +5,22 @@ import { useState } from 'react';
 import BrewOptions from '../brew-options/brew-options';
 import RecipeInfo from '../recipe-info/recipe-info';
 
-const Brew = () => {
-  const [brewSize, setBrewSize] = useState('medium');
-  const [balance, setBalance] = useState('even');
-  const [strength, setStrength] = useState('medium');
+import calculateBrew, {
+  BrewSize,
+  Balance,
+  Strength,
+} from '@/utils/calculate-brew';
 
-  // TODO: update hardcoded vals after creating calc func
-  const coffeeAmount = 20;
-  const waterAmount = 300;
-  const pours = [
-    { pourNumber: 1, amount: 60 },
-    { pourNumber: 2, amount: 60 },
-    { pourNumber: 3, amount: 90 },
-    { pourNumber: 4, amount: 90 },
-  ];
+const Brew = () => {
+  const [brewSize, setBrewSize] = useState<BrewSize>(BrewSize.MEDIUM);
+  const [balance, setBalance] = useState<Balance>(Balance.EVEN);
+  const [strength, setStrength] = useState<Strength>(Strength.MEDIUM);
+
+  const { coffeeAmount, waterAmount, pours } = calculateBrew(
+    brewSize,
+    balance,
+    strength
+  );
 
   return (
     <div className="p-4">

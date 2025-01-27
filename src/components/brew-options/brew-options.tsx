@@ -1,14 +1,15 @@
 'use client';
 
 import { Beaker, Scale, Gauge } from 'lucide-react';
+import { BrewSize, Balance, Strength } from '@/utils/calculate-brew';
 
 type BrewOptionsProps = {
-  brewSize: string;
-  setBrewSize: (size: string) => void;
-  balance: string;
-  setBalance: (balance: string) => void;
-  strength: string;
-  setStrength: (strength: string) => void;
+  brewSize: BrewSize;
+  setBrewSize: (size: BrewSize) => void;
+  balance: Balance;
+  setBalance: (balance: Balance) => void;
+  strength: Strength;
+  setStrength: (strength: Strength) => void;
 };
 
 const BrewOptions = ({
@@ -31,11 +32,11 @@ const BrewOptions = ({
         <select
           className="border-none text-white text-lg bg-gray-800"
           value={brewSize}
-          onChange={(e) => setBrewSize(e.target.value)}
+          onChange={(e) => setBrewSize(e.target.value as BrewSize)}
         >
-          <option value="small">Small (8 fl oz)</option>
-          <option value="medium">Medium (10 fl oz)</option>
-          <option value="large">Large (13 fl oz)</option>
+          <option value={BrewSize.SMALL}>Small (8 fl oz)</option>
+          <option value={BrewSize.MEDIUM}>Medium (10 fl oz)</option>
+          <option value={BrewSize.LARGE}>Large (13 fl oz)</option>
         </select>
       </div>
 
@@ -49,11 +50,11 @@ const BrewOptions = ({
         <select
           className="border-none text-white text-lg bg-gray-800"
           value={balance}
-          onChange={(e) => setBalance(e.target.value)}
+          onChange={(e) => setBalance(e.target.value as Balance)}
         >
-          <option value="sweet">Sweet</option>
-          <option value="even">Even</option>
-          <option value="bright">Bright</option>
+          <option value={Balance.SWEET}>Sweet</option>
+          <option value={Balance.EVEN}>Even</option>
+          <option value={Balance.BRIGHT}>Bright</option>
         </select>
       </div>
 
@@ -67,11 +68,11 @@ const BrewOptions = ({
         <select
           className="border-none text-white text-lg bg-gray-800"
           value={strength}
-          onChange={(e) => setStrength(e.target.value)}
+          onChange={(e) => setStrength(e.target.value as Strength)}
         >
-          <option value="light">Light</option>
-          <option value="medium">Medium</option>
-          <option value="strong">Strong</option>
+          <option value={Strength.LIGHT}>Light</option>
+          <option value={Strength.MEDIUM}>Medium</option>
+          <option value={Strength.STRONG}>Strong</option>
         </select>
       </div>
     </div>
